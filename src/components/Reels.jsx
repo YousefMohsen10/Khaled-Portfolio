@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Reveal from './Reveal';
 
 function scrollTo(id) {
@@ -80,9 +80,11 @@ const reels = [
 
 export default function Reels() {
   const videoRefs = useRef({});
+  const [playingId, setPlayingId] = useState(null);
 
-  const handleVideoClick = (e, id) => {
-    const clicked = e.currentTarget;
+  const handleToggle = (id) => {
+    const clicked = videoRefs.current[id];
+    if (!clicked) return;
 
     // pause all other videos
     Object.entries(videoRefs.current).forEach(([vid, el]) => {
@@ -93,9 +95,16 @@ export default function Reels() {
     });
 
     if (clicked.paused) {
-      clicked.play();
+      clicked.muted = false;        // unmute on first user tap (gesture allows audio)
+      clicked.play().catch(() => {
+        // if play fails (e.g. strict browser policy), keep muted and retry
+        clicked.muted = true;
+        clicked.play().catch(() => {});
+      });
+      setPlayingId(id);
     } else {
       clicked.pause();
+      setPlayingId(null);
     }
   };
 
@@ -123,8 +132,15 @@ export default function Reels() {
                   className={`reel-placeholder ${phClass}`}
                   src={getVideoSrc(num)}
                   playsInline
+                  muted
+                  loop
                   preload="metadata"
-                  onClick={(e) => handleVideoClick(e, id)}
+                />
+                {/* overlay button for reliable mobile tap */}
+                <button
+                  className={`reel-play-btn${playingId === id ? ' reel-play-btn--playing' : ''}`}
+                  aria-label={playingId === id ? 'Pause' : 'Play'}
+                  onClick={() => handleToggle(id)}
                 />
                 <div className="reel-info">
                   <span className="reel-tag">{tag}</span>
