@@ -1,0 +1,4 @@
+public/videos/
+node_modules/
+dist/
+.env
