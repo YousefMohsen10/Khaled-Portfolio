@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import Reveal from './Reveal';
 
 function scrollTo(id) {
   const el = document.getElementById(id);
@@ -43,6 +42,12 @@ const cloudinaryUrls = {
 
 function getVideoSrc(num) {
   return cloudinaryUrls[num] ?? `/videos/reel (${num}).MOV`;
+}
+
+function getPosterSrc(num) {
+  return getVideoSrc(num)
+    .replace('/video/upload/', '/video/upload/so_0,w_480,q_auto/')
+    .replace(/\.(mp4|mov)$/i, '.jpg');
 }
 
 const reels = [
@@ -112,29 +117,28 @@ export default function Reels() {
     <section className="section reels-section" id="reels">
       <div className="container">
 
-        <Reveal direction="up">
-          <div className="section-header">
+        <div className="section-header">
             <p className="section-eyebrow center">Motion Work</p>
             <h2 className="section-title">Cinematic <em>Reels</em></h2>
             <p className="section-desc">
               Vertical cinematic stories crafted for the scroll-first generation.<br />
               Every frame, intentional.
             </p>
-          </div>
-        </Reveal>
+        </div>
 
         <div className="reels-grid">
-          {reels.map(({ id, num, phClass, tag, delay }) => (
-            <Reveal key={id} direction="up" delay={delay} className="reel-item">
+          {reels.map(({ id, num, phClass, tag }) => (
+            <article key={id} className="reel-item">
               <div className="reel-frame">
                 <video
                   ref={(el) => { videoRefs.current[id] = el; }}
                   className={`reel-placeholder ${phClass}`}
                   src={getVideoSrc(num)}
+                  poster={getPosterSrc(num)}
                   playsInline
                   muted
                   loop
-                  preload="metadata"
+                  preload="none"
                 />
                 {/* overlay button for reliable mobile tap */}
                 <button
@@ -146,13 +150,13 @@ export default function Reels() {
                   <span className="reel-tag">{tag}</span>
                 </div>
               </div>
-            </Reveal>
+            </article>
           ))}
         </div>
 
-        <Reveal direction="up" className="section-cta">
+        <div className="section-cta">
           <button className="btn btn--outline" onClick={() => scrollTo('contact')}>Commission a Reel</button>
-        </Reveal>
+        </div>
 
       </div>
     </section>

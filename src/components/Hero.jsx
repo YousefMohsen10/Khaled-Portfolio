@@ -63,7 +63,7 @@ export default function Hero() {
             single frame — every project is a visual conversation.
           </p>
           <div className="hero-ctas">
-            <button className="btn btn--primary" onClick={() => scrollTo('work')}>View Portfolio</button>
+            <button className="btn btn--primary" onClick={() => scrollTo('reels')}>View Portfolio</button>
             <button className="btn btn--ghost" onClick={() => scrollTo('contact')}>Let's Collaborate</button>
           </div>
           <div className="hero-stats">

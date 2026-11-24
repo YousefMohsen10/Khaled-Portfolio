@@ -5,11 +5,8 @@ import Cursor      from './components/Cursor';
 import Nav         from './components/Nav';
 import MobileMenu  from './components/MobileMenu';
 import Hero        from './components/Hero';
-import Work        from './components/Work';
 import Reels       from './components/Reels';
 import Events      from './components/Events';
-import Process     from './components/Process';
-import About       from './components/About';
 import Contact     from './components/Contact';
 import Footer      from './components/Footer';
 import BackToTop   from './components/BackToTop';
@@ -26,11 +23,8 @@ export default function App() {
 
       <main>
         <Hero />
-        <Work />
         <Reels />
         <Events />
-        <Process />
-        <About />
         <Contact />
       </main>
 

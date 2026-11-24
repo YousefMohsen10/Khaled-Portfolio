@@ -9,10 +9,8 @@ function scrollTo(id) {
 }
 
 const links = [
-  { id: 'work',   label: 'Work'   },
   { id: 'reels',  label: 'Reels'  },
   { id: 'events', label: 'Events' },
-  { id: 'about',  label: 'About'  },
 ];
 
 export default function Nav({ onMenuOpen }) {

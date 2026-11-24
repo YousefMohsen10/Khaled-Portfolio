@@ -4,7 +4,7 @@ function scrollTo(id) {
   window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
 }
 
-const links = ['work', 'reels', 'events', 'about', 'contact'];
+const links = ['reels', 'events', 'contact'];
 
 export default function Footer() {
   const year = new Date().getFullYear();

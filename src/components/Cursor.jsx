@@ -36,7 +36,7 @@ export default function Cursor() {
     const removeHover = () => followed.classList.remove('hovering');
 
     const hoverEls = document.querySelectorAll(
-      'a, button, .work-item, .reel-placeholder, .mosaic-item, .skill-tag, .btn, select, input, textarea'
+      'a, button, .reel-placeholder, .mosaic-item, .skill-tag, .btn, select, input, textarea'
     );
     hoverEls.forEach(el => {
       el.addEventListener('mouseenter', addHover);
