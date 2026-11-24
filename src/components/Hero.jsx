@@ -68,12 +68,12 @@ export default function Hero() {
           </div>
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-number">150<sup>+</sup></span>
+              <span className="stat-number">50<sup>+</sup></span>
               <span className="stat-label">Events Covered</span>
             </div>
             <div className="stat-divider" />
             <div className="stat">
-              <span className="stat-number">80<sup>+</sup></span>
+              <span className="stat-number">70<sup>+</sup></span>
               <span className="stat-label">Reels Produced</span>
             </div>
             <div className="stat-divider" />
