@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from './context/ThemeContext';
 import Loader      from './components/Loader';
 import Cursor      from './components/Cursor';
@@ -30,6 +31,7 @@ export default function App() {
 
       <Footer />
       <BackToTop />
+      <Analytics />
     </ThemeProvider>
   );
 }
