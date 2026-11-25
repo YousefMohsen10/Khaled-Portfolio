@@ -499,6 +499,24 @@ input, textarea, select { font-family: inherit; }
 .ev-card-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; color: var(--charcoal); margin: 0; }
 .ev-folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr)); align-items: start; gap: 0.75rem; margin-top: 1rem; }
 .ev-folder-photo { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); }
+.ev-folder-photo-button { display: block; width: 100%; padding: 0; overflow: hidden; border-radius: var(--radius-sm); cursor: zoom-in; }
+.ev-folder-photo-button:focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; }
+.ev-lightbox {
+  position: fixed; inset: 0; z-index: 2100; display: flex; align-items: center; justify-content: center;
+  padding: 4rem 5rem; background: rgba(8,7,6,0.97); cursor: zoom-out;
+}
+.ev-lightbox-image { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 2px; cursor: default; }
+.ev-lightbox-close, .ev-lightbox-nav {
+  position: absolute; display: grid; place-items: center; width: 48px; height: 48px;
+  border: 1px solid rgba(249,246,241,0.25); border-radius: 50%; background: rgba(20,18,16,0.65);
+  color: #F9F6F1; font-size: 1.75rem; cursor: pointer;
+}
+.ev-lightbox-close { top: 1.25rem; right: 1.25rem; }
+.ev-lightbox-nav { top: 50%; transform: translateY(-50%); }
+.ev-lightbox-prev { left: 1.25rem; }
+.ev-lightbox-next { right: 1.25rem; }
+.ev-lightbox-close:hover, .ev-lightbox-nav:hover { background: rgba(249,246,241,0.18); }
+.ev-lightbox-count { position: absolute; bottom: 1.25rem; color: rgba(249,246,241,0.75); font-size: 0.75rem; letter-spacing: 0.12em; }
 .ev-card-open { display: flex; align-items: center; justify-content: space-between; padding: 0 1.25rem; color: var(--charcoal-soft); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .ev-card-open span { font-size: 1rem; transition: transform var(--dur-fast) var(--ease-out); }
 .ev-card:hover .ev-card-open span { transform: translateX(4px); }

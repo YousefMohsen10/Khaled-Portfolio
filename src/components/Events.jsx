@@ -4,6 +4,15 @@ import Reveal from './Reveal';
 /* ─── Projects Data ─────────────────────────────────────── */
 const projects = [
   {
+    id: 'clinic',
+    title: 'Clinic',
+    tag: 'Commercial Photography',
+    images: [
+      '/clinic/DSC06421.JPG',
+      '/clinic/DSC06430.JPG',
+    ],
+  },
+  {
     id: 'deloitte',
     title: 'Deloitte',
     tag: 'Corporate Event',
@@ -110,7 +119,10 @@ const projects = [
   },
 ];
 
-const optimizedImage = (src) => src.replace('/events/', '/events-optimized/').replace(/\.(jpe?g)$/i, '.webp');
+const optimizedImage = (src) => src
+  .replace('/events/', '/events-optimized/')
+  .replace('/clinic/', '/clinic-optimized/')
+  .replace(/\.(jpe?g)$/i, '.webp');
 /* ─── Project folders ──────────────────────────────────── */
 function ProjectCard({ project, onOpen }) {
   return (
@@ -131,18 +143,29 @@ function ProjectCard({ project, onOpen }) {
 }
 
 function ProjectGallery({ project, onClose }) {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const onKeyDown = (event) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') {
+        if (selectedImage !== null) setSelectedImage(null);
+        else onClose();
+      }
+      if (selectedImage !== null && event.key === 'ArrowLeft') {
+        setSelectedImage(index => (index - 1 + project.images.length) % project.images.length);
+      }
+      if (selectedImage !== null && event.key === 'ArrowRight') {
+        setSelectedImage(index => (index + 1) % project.images.length);
+      }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [onClose]);
+  }, [onClose, project.images.length, selectedImage]);
 
   return (
     <div className="ev-modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
@@ -156,17 +179,43 @@ function ProjectGallery({ project, onClose }) {
         </header>
         <div className="ev-folder-grid">
           {project.images.map((src, index) => (
-            <img
+            <button
               key={src}
-              src={optimizedImage(src)}
-              alt={`${project.title}, photo ${index + 1}`}
-              className="ev-folder-photo"
-              loading={index < 8 ? 'eager' : 'lazy'}
-              decoding="async"
-            />
+              type="button"
+              className="ev-folder-photo-button"
+              onClick={() => setSelectedImage(index)}
+              aria-label={`View ${project.title} photo ${index + 1} full screen`}
+            >
+              <img
+                src={optimizedImage(src)}
+                alt={`${project.title}, photo ${index + 1}`}
+                className="ev-folder-photo"
+                loading={index < 8 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </button>
           ))}
         </div>
       </section>
+      {selectedImage !== null && (
+        <div
+          className="ev-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${project.title} photo ${selectedImage + 1} of ${project.images.length}`}
+          onClick={(event) => event.target === event.currentTarget && setSelectedImage(null)}
+        >
+          <button className="ev-lightbox-close" type="button" onClick={() => setSelectedImage(null)} aria-label="Close full screen photo">&times;</button>
+          {project.images.length > 1 && (
+            <>
+              <button className="ev-lightbox-nav ev-lightbox-prev" type="button" onClick={() => setSelectedImage(index => (index - 1 + project.images.length) % project.images.length)} aria-label="Previous photo">&larr;</button>
+              <button className="ev-lightbox-nav ev-lightbox-next" type="button" onClick={() => setSelectedImage(index => (index + 1) % project.images.length)} aria-label="Next photo">&rarr;</button>
+            </>
+          )}
+          <img className="ev-lightbox-image" src={optimizedImage(project.images[selectedImage])} alt={`${project.title}, photo ${selectedImage + 1}`} />
+          <span className="ev-lightbox-count">{selectedImage + 1} / {project.images.length}</span>
+        </div>
+      )}
     </div>
   );
 }

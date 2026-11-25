@@ -8,15 +8,15 @@ function scrollTo(id) {
 
 // Map each reel number to its Cloudinary URL (or null to fall back to local file)
 const cloudinaryUrls = {
-  1:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269457/reel_1__compressed.mp4',
-  2:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269328/reel_2__compressed.mp4',
-  3:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269594/reel_3__compressed.mp4',
-  4:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269527/reel_4__compressed.mp4',
-  5:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269691/reel_5__compressed.mp4',
-  6:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269721/reel_6__compressed.mp4',
-  7:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269703/reel_7__compressed.mp4',
-  8:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269829/reel_8__compressed.mp4',
-  9:  'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269846/reel_9__compressed.mp4',
+  1: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269457/reel_1__compressed.mp4',
+  2: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269328/reel_2__compressed.mp4',
+  3: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269594/reel_3__compressed.mp4',
+  4: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269527/reel_4__compressed.mp4',
+  5: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269691/reel_5__compressed.mp4',
+  6: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269721/reel_6__compressed.mp4',
+  7: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269703/reel_7__compressed.mp4',
+  8: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269829/reel_8__compressed.mp4',
+  9: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269846/reel_9__compressed.mp4',
   10: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269873/reel_10__compressed.mp4',
   11: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269946/reel_11__compressed.mp4',
   12: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795269960/reel_12__compressed.mp4',
@@ -38,6 +38,7 @@ const cloudinaryUrls = {
   28: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795270589/reel_28__compressed.mp4',
   29: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795270665/reel_29__compressed.mp4',
   30: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795270646/reel_30__compressed.mp4',
+  31: 'https://res.cloudinary.com/ekeg3vhw/video/upload/v1795517158/2026_08_02_12_20_IMG_2170_compressed.mp4',
 };
 
 function getVideoSrc(num) {
@@ -51,15 +52,15 @@ function getPosterSrc(num) {
 }
 
 const reels = [
-  { id: 'r1',  num: 1,  phClass: 'reel-ph-1',  delay: 0 },
-  { id: 'r2',  num: 2,  phClass: 'reel-ph-2',  delay: 150 },
-  { id: 'r3',  num: 3,  phClass: 'reel-ph-3',  delay: 300 },
-  { id: 'r4',  num: 4,  phClass: 'reel-ph-4',  delay: 450 },
-  { id: 'r5',  num: 5,  phClass: 'reel-ph-5',  delay: 600 },
-  { id: 'r6',  num: 6,  phClass: 'reel-ph-6',  delay: 750 },
-  { id: 'r7',  num: 7,  phClass: 'reel-ph-7',  delay: 900 },
-  { id: 'r8',  num: 8,  phClass: 'reel-ph-8',  delay: 1050 },
-  { id: 'r9',  num: 9,  phClass: 'reel-ph-9',  delay: 1200 },
+  { id: 'r1', num: 1, phClass: 'reel-ph-1', delay: 0 },
+  { id: 'r2', num: 2, phClass: 'reel-ph-2', delay: 150 },
+  { id: 'r3', num: 3, phClass: 'reel-ph-3', delay: 300 },
+  { id: 'r4', num: 4, phClass: 'reel-ph-4', delay: 450 },
+  { id: 'r5', num: 5, phClass: 'reel-ph-5', delay: 600 },
+  { id: 'r6', num: 6, phClass: 'reel-ph-6', delay: 750 },
+  { id: 'r7', num: 7, phClass: 'reel-ph-7', delay: 900 },
+  { id: 'r8', num: 8, phClass: 'reel-ph-8', delay: 1050 },
+  { id: 'r9', num: 9, phClass: 'reel-ph-9', delay: 1200 },
   { id: 'r10', num: 10, phClass: 'reel-ph-10', delay: 1350 },
   { id: 'r11', num: 11, phClass: 'reel-ph-11', delay: 1500 },
   { id: 'r12', num: 12, phClass: 'reel-ph-12', delay: 1650 },
@@ -81,6 +82,7 @@ const reels = [
   { id: 'r28', num: 28, phClass: 'reel-ph-28', delay: 4050 },
   { id: 'r29', num: 29, phClass: 'reel-ph-29', delay: 4200 },
   { id: 'r30', num: 30, phClass: 'reel-ph-30', delay: 4350 },
+  { id: 'r31', num: 31, phClass: 'reel-ph-31', delay: 4500 },
 ];
 
 export default function Reels() {
@@ -104,7 +106,7 @@ export default function Reels() {
       clicked.play().catch(() => {
         // if play fails (e.g. strict browser policy), keep muted and retry
         clicked.muted = true;
-        clicked.play().catch(() => {});
+        clicked.play().catch(() => { });
       });
       setPlayingId(id);
     } else {
@@ -118,12 +120,12 @@ export default function Reels() {
       <div className="container">
 
         <div className="section-header">
-            <p className="section-eyebrow center">Motion Work</p>
-            <h2 className="section-title">Cinematic <em>Reels</em></h2>
-            <p className="section-desc">
-              Vertical cinematic stories crafted for the scroll-first generation.<br />
-              Every frame, intentional.
-            </p>
+          <p className="section-eyebrow center">Motion Work</p>
+          <h2 className="section-title">Cinematic <em>Reels</em></h2>
+          <p className="section-desc">
+            Vertical cinematic stories crafted for the scroll-first generation.<br />
+            Every frame, intentional.
+          </p>
         </div>
 
         <div className="reels-grid">
